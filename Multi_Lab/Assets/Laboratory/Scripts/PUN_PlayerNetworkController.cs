@@ -19,6 +19,7 @@ namespace Laboratory.Scripts
     {
         // A static reference to the local player's camera follow target. Accessible from anywhere.
         public static Transform LocalPlayerFollowTarget { get; private set; }
+        private UIPlayerInfoManager _playerInfoManager;
 
         // Cached reference to the character's movement logic.
         private FirstPersonController _controllerLogic;
@@ -30,6 +31,7 @@ namespace Laboratory.Scripts
 
         void Awake()
         {
+            _playerInfoManager = GetComponentInChildren<UIPlayerInfoManager>(); 
             _controllerLogic = GetComponent<FirstPersonController>();
             _playerInput = GetComponent<PlayerInput>();
             _assetsInput = GetComponent<StarterAssetsInputs>();
@@ -56,6 +58,7 @@ namespace Laboratory.Scripts
 
                 // : we keep track of the localPlayer instance to prevent instanciation
                 // when levels are synchronized
+                _playerInfoManager.SetLocalUI();
                 LocalPlayerInstance = gameObject;
             }
             else

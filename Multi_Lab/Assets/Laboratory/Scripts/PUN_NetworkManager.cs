@@ -5,7 +5,6 @@ using Photon.Realtime;
 
 namespace Laboratory.Scripts
 {
-
     public class PUN_NetworkManager : ConnectAndJoinRandom
     {
         public static PUN_NetworkManager singleton;

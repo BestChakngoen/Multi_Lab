@@ -1,46 +1,65 @@
-﻿using System; 
-using UnityEngine; 
+using System;
+using UnityEngine;
 
 namespace Laboratory.Scripts
 {
-    /// <summary> 
-    /// This is a PURE, OFFLINE projectile script. It knows nothing about networking. 
-    /// It handles its own movement, collision, and lifetime. 
-    /// </summary> 
-    [RequireComponent(typeof(Rigidbody))] 
-    [RequireComponent(typeof(Collider))] 
-    public class Projectile : MonoBehaviour 
-    { 
-        [Tooltip("The force applied to the bullet on instantiation.")] 
-        public float Force = 20f; 
-        [Tooltip("How many seconds before the bullet destroys itself if it hits nothing.")] 
-        public float Lifetime = 10.0f; 
- 
-        public event Action OnHitAction; 
- 
-        private void Start() { 
-            // This logic runs for the owner online, and for everyone offline. 
-            Rigidbody rb = GetComponent<Rigidbody>(); 
-            rb.linearVelocity = transform.forward * Force; 
-        } 
- 
-        private void OnTriggerEnter(Collider other) { 
-            // This logic runs for the owner online, and for everyone offline. 
-            Debug.Log($"Projectile hit {other.name}"); 
- 
-            // For simplicity, we destroy the projectile when it hits anything. 
-            // In a real game, you might check tags or layers. 
-            OnHitAction?.Invoke(); 
-        } 
- 
-        /// <summary> 
-        /// This is the "injection" method. The creator of this projectile 
-        /// will call this to tell it what to do upon collision. 
-        /// </summary> 
-        /// <param name="hitAction">The action to perform when hitting an object.</param> 
-        public void SetupHitAction(Action hitAction) { 
-            OnHitAction = hitAction; 
-        } 
-    } 
+    /// <summary>
+    /// This is a PURE, OFFLINE projectile script. It knows nothing about networking.
+    /// It handles its own movement, collision, and lifetime.
+    /// </summary>
+    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(Collider))]
+    public class Projectile : MonoBehaviour
+    {
+        [Tooltip("The force applied to the bullet on instantiation.")]
+        public float Force = 20f;
 
+        [Tooltip("How many seconds before the bullet destroys itself if it hits nothing.")]
+        public float Lifetime = 10.0f;
+        
+        [Tooltip("The magnitude of the effect this projectile applies (e.g., 25 for damage, 50 for healing).")] 
+        public int EffectValue = 25; 
+
+        public event Action OnHitAction;
+        public event Action<GameObject> OnMagicBoxHit; 
+        public event Action<GameObject, int> OnPlayerHit; 
+
+        private void Start()
+        {
+            // This logic runs for the owner online, and for everyone offline.
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.linearVelocity = transform.forward * Force;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            // This logic runs for the owner online, and for everyone offline.
+            Debug.Log($"Projectile hit {other.name}");
+
+            // Check if the object we collided with is a magic box. 
+            if (other.name.Contains("MagicBox")) { 
+                // Fire the event to notify any listeners that the box was hit, 
+                // passing along a reference to the box's GameObject. 
+                Debug.Log("OnMagicBoxHit is Invoke"); 
+                OnMagicBoxHit?.Invoke(other.gameObject); 
+             
+            }else if (other.CompareTag("Player")) { 
+                Debug.Log("OnPlayerHit is Invoke"); 
+                OnPlayerHit?.Invoke(other.gameObject, EffectValue); 
+            } 
+            // For simplicity, we destroy the projectile when it hits anything.
+            // In a real game, you might check tags or layers.
+            OnHitAction?.Invoke();
+        }
+
+        /// <summary>
+        /// This is the "injection" method. The creator of this projectile
+        /// will call this to tell it what to do upon collision.
+        /// </summary>
+        /// <param name="hitAction">The action to perform when hitting an object.</param>
+        public void SetupHitAction(Action hitAction)
+        {
+            OnHitAction = hitAction;
+        }
+    }
 }

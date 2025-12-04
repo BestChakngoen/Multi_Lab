@@ -1,4 +1,4 @@
-﻿namespace Laboratory.Scripts
+namespace Laboratory.Scripts
 {
     public interface IShooter
     {

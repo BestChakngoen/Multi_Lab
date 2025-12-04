@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5550324555142414523}
   - component: {fileID: 1899040489499176690}
   - component: {fileID: 497251277727366808}
-  - component: {fileID: 1322926596369662065}
-  - component: {fileID: -7503338234493647827}
-  - component: {fileID: 1455753181191942560}
+  - component: {fileID: -754116153303089423}
+  - component: {fileID: 4979729293248617589}
+  - component: {fileID: -2343960155921569046}
   m_Layer: 0
   m_Name: PUN_Bullet
   m_TagString: Untagged
@@ -33,8 +33,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -109,7 +109,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -142,7 +142,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1322926596369662065
+--- !u!114 &-754116153303089423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563717526094559943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575efbe7f246b254399ac5cdd49544dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Force: 20
+  Lifetime: 3
+  EffectValue: -25
+--- !u!114 &4979729293248617589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,19 +168,18 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonView
+  m_EditorClassIdentifier: 
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 0
-  ObservedComponents:
-  - {fileID: 0}
+  observableSearch: 2
+  ObservedComponents: []
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-7503338234493647827
+--- !u!114 &-2343960155921569046
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,20 +188,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1563717526094559943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51c061010cd843b2acb621d5dbefa4c2, type: 3}
+  m_Script: {fileID: 11500000, guid: dd742d3258f886940b551993a9271810, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.Projectile
-  Force: 20
-  Lifetime: 10
---- !u!114 &1455753181191942560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1563717526094559943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011c74aba3a64cbeb3cf609df62a2467, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.PUN_Projectile
+  m_EditorClassIdentifier: 
