@@ -6,22 +6,33 @@ using Laboratory.Scripts;
 public class UIPlayerInfoManager : MonoBehaviour
 {
     public Slider _healthSlider;
-    public Slider _sterminaSlider;
+    public Slider _staminaSlider;
     public TextMeshProUGUI _TextNickName;
+    
     PlayerHealth _targetPlayerHealth;
+    PlayerStamina _targetPlayerStamina; 
 
-    public void Awake() { 
-        /// /// Get Component In Parent  
-        _targetPlayerHealth = GetComponentInParent<PlayerHealth>(); 
-    } 
-    private void OnEnable() { 
-        /// Register On Change Event 
-        _targetPlayerHealth.OnHealthChanged += UpdateHealthBar; 
-    } 
-    private void OnDisable() { 
-        /// Remove On Change Event 
-        _targetPlayerHealth.OnHealthChanged -= UpdateHealthBar; 
-    } 
+    public void Awake()
+    {
+        /// /// Get Component In Parent 
+        _targetPlayerHealth = GetComponentInParent<PlayerHealth>();
+        _targetPlayerStamina = GetComponentInParent<PlayerStamina>(); 
+    }
+
+    private void OnEnable()
+    {
+        /// Register On Change Event
+        _targetPlayerHealth.OnHealthChanged += UpdateHealthBar;
+        _targetPlayerStamina.OnStaminaChanged += UpdateSterminaBar;
+    }
+
+    private void OnDisable()
+    {
+        /// Remove On Change Event
+        _targetPlayerHealth.OnHealthChanged -= UpdateHealthBar;
+        _targetPlayerStamina.OnStaminaChanged -= UpdateSterminaBar;
+    }
+
     public void SetLocalUI()
     {
         //UI Control
@@ -42,7 +53,6 @@ public class UIPlayerInfoManager : MonoBehaviour
 
     private void UpdateSterminaBar(float current, float max)
     {
-        _sterminaSlider.value = (float)current / max;
+        _staminaSlider.value = (float)current / max;
     }
-
 }

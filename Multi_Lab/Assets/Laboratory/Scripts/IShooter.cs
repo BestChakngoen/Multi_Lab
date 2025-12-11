@@ -1,7 +1,5 @@
-namespace Laboratory.Scripts
+
+public interface IShooter
 {
-    public interface IShooter
-    {
-        void Fire();
-    }
+    void Fire();
 }

@@ -54,7 +54,7 @@
                 {
                     "name": "Heal",
                     "type": "Button",
-                    "id": "e211ac1a-9551-41f3-bbf9-5b031ee7067c",
+                    "id": "b43e6c28-eb88-4058-9519-939c63974c4e",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -251,7 +251,7 @@
                 },
                 {
                     "name": "",
-                    "id": "bf165cca-5be7-469e-af88-4af6749d670e",
+                    "id": "32ed36a4-e02b-46f1-9cb2-0f91641d2374",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",

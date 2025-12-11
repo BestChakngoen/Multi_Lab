@@ -1,7 +1,4 @@
-﻿namespace Laboratory.Scripts
+public interface IColorChangeInitiator
 {
-    public interface IColorChangeInitiator
-    {
-        void InitiateColorChange(); 
-    }
+    void InitiateColorChange();
 }

@@ -12,8 +12,6 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
-		public bool heal;
-		public bool fire;
 
         [Header("Movement Settings")]
 		public bool analogMovement;
@@ -46,19 +44,22 @@ namespace StarterAssets
 			SprintInput(value.isPressed);
 		}
 
-		public void OnHeal(InputValue value)
-		{
-			heal = value.isPressed;
-		}
-
         // --- MODIFICATION FOR OFFLINE ACTION ---
         /// <summary>
         /// Add Player can Fire a bullet
         /// </summary>
+        public bool fire;
         public void OnFire(InputValue value)
         {
             fire = value.isPressed;
         }
+
+		public bool heal;
+
+		public void OnHeal(InputValue value)
+		{
+			heal = value.isPressed;
+		}
         // --- END MODIFICATION ---
 #endif
 

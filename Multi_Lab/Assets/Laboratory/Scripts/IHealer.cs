@@ -1,8 +1,7 @@
-﻿namespace Laboratory.Scripts
+/// <summary>
+/// Interface for any component that can launch a healing projectile.
+/// </summary>
+public interface IHealer
 {
-    public interface IHealer
-    {
-        //void SetHealer(IHealer healer);
-        void LaunchHeal();
-    }
+    void LaunchHeal();
 }

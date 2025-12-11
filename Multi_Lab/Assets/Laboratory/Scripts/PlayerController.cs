@@ -1,53 +1,49 @@
-﻿using Laboratory.Scripts;
-using StarterAssets;
+﻿using StarterAssets;
 using UnityEngine;
 
-namespace Laboratory.Scripts
+public class PlayerController : MonoBehaviour
 {
-
-    public class PlayerController : MonoBehaviour
+    private StarterAssetsInputs _input;
+    private IShooter _shooter;
+    /// Add Interface of Healer action
+    private IHealer _healer;
+    private void Awake()
     {
-        private StarterAssetsInputs _input;
-        private IShooter _shooter;
-        private IHealer _healer;
+        _input = GetComponent<StarterAssetsInputs>();
+        _shooter = GetComponent<IShooter>();
+        /// GetComponent
+        _healer = GetComponent<IHealer>();
+    }
 
-        private void Awake()
+    /// <summary>
+    /// This method allows a shooter component to register itself with the controller.
+    /// This is part of the Dependency Injection pattern.
+    /// </summary>
+    public void SetShooter(IShooter newShooter)
+    {
+        _shooter = newShooter;
+        Debug.Log($"PlayerController has registered a shooter: {newShooter.GetType().Name}", this);
+    }
+
+    public void SetHealer(IHealer newHealer)
+    {
+        _healer = newHealer;
+        Debug.Log($"PlayerController has registered a healer: {newHealer.GetType().Name}", this);
+    }
+
+    void Update()
+    {
+        if (_input != null && _shooter != null && _input.fire)
         {
-            _input = GetComponent<StarterAssetsInputs>();
-            _shooter = GetComponent<IShooter>();
-            _healer = GetComponent<IHealer>();
+            _input.fire = false;
+            _shooter.Fire();
         }
 
-        /// <summary>
-        /// This method allows a shooter component to register itself with the controller.
-        /// This is part of the Dependency Injection pattern.
-        /// </summary>
-        public void SetShooter(IShooter newShooter) 
+        // After Add Implement heal input on StarterAssetsInputs
+        if (_input != null && _healer != null && _input.heal)
         {
-            _shooter = newShooter;
-            Debug.Log($"PlayerController has registered a shooter: {newShooter.GetType().Name}", this);
-        }
-
-        public void SetHealer(IHealer newHealer) 
-        {
-            _healer = newHealer;
-            Debug.Log($"PlayerController has registered a healer: {newHealer.GetType().Name}",
-                this);
-        }
-
-        void Update()
-        {
-            if (_input != null && _shooter != null && _input.fire)
-            {
-                _input.fire = false;
-                _shooter.Fire();
-            }
-
-            if (_input != null && _healer != null && _input.heal)
-            {
-                _input.heal = false;
-                _healer.LaunchHeal();
-            }
+            _input.heal = false;
+            _healer.LaunchHeal();
         }
     }
 }

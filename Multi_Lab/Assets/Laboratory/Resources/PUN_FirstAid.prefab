@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8434965196254722915}
   - component: {fileID: 8545567525328428224}
   - component: {fileID: 7290278346173940968}
-  - component: {fileID: -1175521450384582101}
-  - component: {fileID: 1408077168928125431}
-  - component: {fileID: 5559450900561560810}
-  - component: {fileID: -9115270934547684475}
+  - component: {fileID: 568827559445248247}
+  - component: {fileID: -1434873349774267187}
+  - component: {fileID: 8804169358302566438}
+  - component: {fileID: 8045705464545638021}
   m_Layer: 0
   m_Name: PUN_FirstAid
   m_TagString: Untagged
@@ -115,7 +115,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &-1175521450384582101
+--- !u!54 &568827559445248247
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -142,7 +142,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1408077168928125431
+--- !u!114 &-1434873349774267187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,11 +153,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 575efbe7f246b254399ac5cdd49544dc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.Projectile
+  m_EditorClassIdentifier: 
   Force: 20
   Lifetime: 10
   EffectValue: 5
---- !u!114 &5559450900561560810
+--- !u!114 &8804169358302566438
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,7 +168,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: PhotonUnityNetworking::Photon.Pun.PhotonView
+  m_EditorClassIdentifier: 
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
@@ -179,7 +179,7 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-9115270934547684475
+--- !u!114 &8045705464545638021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,4 +190,4 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd742d3258f886940b551993a9271810, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.PUN_Projectile
+  m_EditorClassIdentifier: 
