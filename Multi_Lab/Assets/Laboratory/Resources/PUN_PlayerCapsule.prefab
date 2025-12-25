@@ -169,8 +169,9 @@ GameObject:
   - component: {fileID: 7841763227458027814}
   - component: {fileID: 6977120378461401700}
   - component: {fileID: 1508878735138363931}
-  - component: {fileID: -2207297344973999708}
-  - component: {fileID: 6654401171192233673}
+  - component: {fileID: -8238997817909351091}
+  - component: {fileID: 8221042371704111054}
+  - component: {fileID: 4564045680621311120}
   m_Layer: 8
   m_Name: PUN_PlayerCapsule
   m_TagString: Player
@@ -286,6 +287,8 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+  isMenuOpen: 0
+  InputBlocked: 0
   fire: 0
   heal: 0
 --- !u!114 &437855842974204907
@@ -407,7 +410,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: -6065289521652240970}
   - {fileID: 7841763227458027814}
-  - {fileID: 6654401171192233673}
+  - {fileID: 8221042371704111054}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -537,7 +540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healBoxPrefab: {fileID: 18092051150739426, guid: d9a7ff660bc9c2e409811484d2720f39, type: 3}
---- !u!114 &-2207297344973999708
+--- !u!114 &-8238997817909351091
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,12 +549,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6843058956415584499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f04619d6434b4bcf84f959840594c2f6, type: 3}
+  m_Script: {fileID: 11500000, guid: defb1b11d6109cb44ae42e56b3c57157, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.PlayerStamina
+  m_EditorClassIdentifier: 
   maxStamina: 100
   _currentStamina: 0
---- !u!114 &6654401171192233673
+--- !u!114 &8221042371704111054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,9 +563,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 6843058956415584499}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd16948f450431794e0839fa357540d, type: 3}
+  m_Script: {fileID: 11500000, guid: 719cc435a64703844beace202d5c546b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Laboratory.Scripts.PUN_Stamina
+  m_EditorClassIdentifier: 
+--- !u!114 &4564045680621311120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6843058956415584499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81e8e460fdeeebb4c8ccf2c7d11df85a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PUN_PlayerColorController
+  _targetRenderer: {fileID: 8429795301341275677}
 --- !u!1001 &2392387210063086566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -587,10 +603,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1907736033119770610, guid: 58449fd8b16928d479d923b20686235b, type: 3}
-      propertyPath: _staminaSlider
-      value: 
-      objectReference: {fileID: 7789695170497846424}
+    - target: {fileID: 2345788538588180874, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345788538588180874, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2345788538588180874, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2946225977177382108, guid: 58449fd8b16928d479d923b20686235b, type: 3}
       propertyPath: m_Name
       value: Canvas-PlayerInfo
@@ -601,6 +625,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2946225977177382273, guid: 58449fd8b16928d479d923b20686235b, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946225977177382276, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946225977177382276, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2946225977177382276, guid: 58449fd8b16928d479d923b20686235b, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2946225977177382277, guid: 58449fd8b16928d479d923b20686235b, type: 3}
@@ -737,14 +773,3 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2946225977177382277, guid: 58449fd8b16928d479d923b20686235b, type: 3}
   m_PrefabInstance: {fileID: 2392387210063086566}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7789695170497846424 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5560249000187535230, guid: 58449fd8b16928d479d923b20686235b, type: 3}
-  m_PrefabInstance: {fileID: 2392387210063086566}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

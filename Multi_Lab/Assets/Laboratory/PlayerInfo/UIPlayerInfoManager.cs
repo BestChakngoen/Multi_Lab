@@ -1,22 +1,24 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Laboratory.Scripts;
 
 public class UIPlayerInfoManager : MonoBehaviour
 {
     public Slider _healthSlider;
-    public Slider _staminaSlider;
+    public Slider _sterminaSlider;
     public TextMeshProUGUI _TextNickName;
-    
+
+    /// <summary>
+    /// Add PlayerHealth
+    /// </summary>
     PlayerHealth _targetPlayerHealth;
-    PlayerStamina _targetPlayerStamina; 
+    PlayerStamina _targetPlayerStamina;
 
     public void Awake()
     {
         /// /// Get Component In Parent 
         _targetPlayerHealth = GetComponentInParent<PlayerHealth>();
-        _targetPlayerStamina = GetComponentInParent<PlayerStamina>(); 
+        _targetPlayerStamina = GetComponentInParent<PlayerStamina>();
     }
 
     private void OnEnable()
@@ -53,6 +55,6 @@ public class UIPlayerInfoManager : MonoBehaviour
 
     private void UpdateSterminaBar(float current, float max)
     {
-        _staminaSlider.value = (float)current / max;
+        _sterminaSlider.value = (float)current / max;
     }
 }
